@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mountain Pass Valet</title>
+    </head>
+    <body>
+        <h1>Mountain Pass Resort Valet</h1>
+        <ul class="parkingLot">
+            <% for(let i=0; i < info.length; i++) {%>
+            <li class="cars">
+                <span><%= info[i].carBrand %></span>
+                <span><%= info[i].lisensePlate %></span>
+                <span><%= info[i].spotNum %></span>
+                <i class="fa fa-thumbs-up"></i>
+                <i class="fa fa-trash"></i>
+                
+            </li>
+        <% } %>
+        </ul>
+
+    <form action="/addCar" method="POST">
+        <input type="text" placeholder="Car Brand" name="carBrand">
+        <input type="text" placeholder="Lisense Plate" name="lisensePlate">
+        <input type="number" placeholder="Spot Number" name="spotNum">
+        <input type="submit">
+    </form>
+    
+
+    <script src='js/main.js'></script>
+</body>
+</html>    
