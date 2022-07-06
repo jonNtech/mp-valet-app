@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient
 const PORT = 3000
 require('dotenv').config()
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
 
 app.get('/', (req, res) => {
@@ -58,7 +60,7 @@ app.post('/addCar', (req, res) => {
 
 
 app.delete('/deleteCar', (req, res) => {
-    db.collection('parkingLot').deleteOne({spotNum: request.body.spotNum})
+    db.collection('parkingLot').deleteOne({spotNum: request.body.spotNumber})
     .then (result => {
         console.log('Car Removed')
         res.json('Car Removed')
@@ -68,5 +70,5 @@ app.delete('/deleteCar', (req, res) => {
 
 
 app.listen(process.env.PORT || PORT, () => {
-    console.log('server is running, better go catch it')
+    console.log(`server is running on ${PORT}, better go catch it`)
 })
