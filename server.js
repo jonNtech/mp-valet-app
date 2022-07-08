@@ -10,7 +10,7 @@ let db,
     dbConnectionStr = process.env.DB_STRING,
     dbName = 'valet'
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(client => { 
         console.log('Connected to Database')
         db = client.db(dbName)
@@ -24,7 +24,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
 
 
     app.get('/', (req, res) => {
-        db.collection('parkingLot').find().sort({spotNum: 1}).toArray()
+        db.collection('parkingLot').find().sort({spotNum: -1}).toArray()
         .then (data =>{
         res.render('index.ejs', {info: data})
         })
@@ -51,10 +51,10 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         })
         .catch(error => console.log(error))
     })
-
-
-    app.listen(process.env.PORT || PORT, () => {
-        console.log('server is running, better go catch it')
-    })
 })
 .catch(error => console.log(error))
+
+app.listen(process.env.PORT || PORT, () => {
+    console.log('server is running, better go catch it')
+})
+
