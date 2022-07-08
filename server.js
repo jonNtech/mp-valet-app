@@ -14,7 +14,8 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true, useNewUrlParser
     .then(client => { 
         console.log('Connected to Database')
         db = client.db(dbName)
-        
+    })
+    .catch(error => console.log(error))      
 
     app.set('view engine', 'ejs')
     app.use(express.static('public'))
@@ -51,8 +52,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true, useNewUrlParser
         })
         .catch(error => console.log(error))
     })
-})
-.catch(error => console.log(error))
+
 
 app.listen(process.env.PORT || PORT, () => {
     console.log('server is running, better go catch it')
