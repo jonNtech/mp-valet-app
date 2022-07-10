@@ -53,7 +53,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true, useNewUrlParser
     })
 })
 .catch(error => console.log(error))  
-
+//listen to the port
 app.listen(process.env.PORT || PORT, () => {
     console.log('server is running, better go catch it')
 })
